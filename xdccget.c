@@ -14,6 +14,7 @@
 #include "file.h"
 #include "hashing_algo.h"
 #include "config.h"
+#include <bsd/string.h>
 
 #define NICKLEN 20
 
@@ -157,14 +158,14 @@ static sds extractMD5 (const char *string) {
     char *md5sum = strstr(string, "md5sum");
 
     if (md5sum != NULL) {
-        strncpy(md5ChecksumString, md5sum+8, MD5_STR_SIZE);
+        strlcpy(md5ChecksumString, md5sum+8, MD5_STR_SIZE);
         return sdsnew(md5ChecksumString);
     }
 
     md5sum = strstr(string, "MD5");
 
     if (md5sum != NULL) {
-        strncpy(md5ChecksumString, md5sum+4, MD5_STR_SIZE);
+        strlcpy(md5ChecksumString, md5sum+4, MD5_STR_SIZE);
         return sdsnew(md5ChecksumString);
     }
 
