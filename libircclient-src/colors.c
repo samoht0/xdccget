@@ -13,7 +13,7 @@
  */
 
 #include <ctype.h>
-#include <string.h>
+#include <bsd/string.h>
 
 #define LIBIRC_COLORPARSER_BOLD			(1<<1)
 #define LIBIRC_COLORPARSER_UNDERLINE            (1<<2)
