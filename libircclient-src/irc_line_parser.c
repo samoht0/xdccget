@@ -1,5 +1,6 @@
 #include "session.h"
 #include "irc_line_parser.h"
+#include <bsd/string.h>
 
 #include "../helper.h"
 #include "irc_parser.h"
@@ -53,7 +54,7 @@ void free_parser_result (irc_parser *parser) {
 
 static inline char* calloc_and_copy_string(const char *string, size_t len) {
     char *result = Calloc(len+1, sizeof(char));
-    strncpy(result, string, len);
+    strlcpy(result, string, len);
     return result;
 }
 
