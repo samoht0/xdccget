@@ -22,6 +22,7 @@
 #include "libircclient.h"
 #include "session.h"
 #include "../helper.h"
+#include <string.h>
 
 #include "utils.c"
 #include "fd_watcher.c"
