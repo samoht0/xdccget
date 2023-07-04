@@ -1,6 +1,5 @@
 #CC=gcc
-CFLAGS =-std=gnu11 -D_FILE_OFFSET_BITS=64 -DENABLE_SSL -DENABLE_IPV6 -DENABLE_ANSI_COLORS -Wall -Wfatal-errors -Os -fstack-protector -I libircclient-include/
-#CFLAGS += -Wsign-compare -Wtype-limits
+CFLAGS += -std=gnu11 -D_FILE_OFFSET_BITS=64 -DENABLE_SSL -DENABLE_IPV6 -DENABLE_ANSI_COLORS -I libircclient-include/
 #CFLAGS += -DHOSTNAME_VALIDATION
 #CFLAGS += -DDEBUG
 LIBS = -lssl -lcrypto -lpthread
@@ -11,7 +10,7 @@ SRCS = xdccget.c config.c helper.c argument_parser.c libircclient-src/libircclie
 all: build
 
 build: $(SRCS)
-	$(CC) $(CFLAGS) -o $(PROG) $(SRCS) $(OBJ_FILES) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROG) $(SRCS) $(OBJ_FILES) $(LIBS)
 
 install:
 	cp ./$(PROG) /usr/bin/
